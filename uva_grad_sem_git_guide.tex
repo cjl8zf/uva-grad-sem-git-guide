@@ -241,9 +241,14 @@ Unpacking objects: 100% (30/30), done.
 \end{lstlisting}
 this will download a working thesis template. Note: you do not need a
 GitHub account to clone public repositories. You can now edit the
-files as you wish and commit to your local copy of this project. You
-would setup a new GitHub project and set that as the origin by
-following the GitHub setup steps above.
+files as you wish and commit to your local copy of this project. Then
+you would run
+\begin{lstlisting}
+git remote remove origin
+\end{lstlisting}
+so it is no longer connected to the repo you cloned it from. You would
+setup a new GitHub project and set that as the origin by following the
+GitHub setup steps above.
 
 The source code for these notes can be cloned via:
 \begin{lstlisting}
