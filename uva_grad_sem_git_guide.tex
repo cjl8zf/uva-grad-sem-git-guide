@@ -29,22 +29,22 @@ you if you would like to install it.
 Once Git has been installed one can access it from the terminal /
 command line. On Windows the command line (CMD) is accessed easily by
 holding ``Windows Key'' and ``r'' together to open the run menu. Then
-type in ``cmd'' and press ``enter''. While on Mac the terminal is
-opened as explained above. One can check to see if git is properly
+type in ``cmd'' and press ``enter''. On Mac the terminal is
+opened as explained above. One can check to see if Git is properly
 installed by running
 \begin{lstlisting}[language=bash]
   git --version
 \end{lstlisting}
-In my case this outputs 
+For me this outputs 
 \begin{lstlisting}[language=bash]
   git version 2.24.3
 \end{lstlisting}
-The way we will interact with git is by calling commands of the form
+The way we will interact with Git is by calling commands of the form
 \begin{lstlisting}
   git command
 \end{lstlisting}
 where command is some valid git command. For instance, we have already
-seen version is valid git command. The next useful command is help:
+seen version is a valid git command. The next useful command is help:
 \begin{lstlisting}
   git help
 \end{lstlisting}
@@ -52,25 +52,27 @@ this will show a list of the valid commands.
 \section{Setting Up a Repository}
 Suppose you have a LaTeX project folder called \lstinline{test}
 containing a LaTeX file \lstinline{test.tex}. To turn this folder into
-a git repo, navigate to the folder inside of the terminal using the cd
-(which stands for change directory), and then run the command
-\lstinline{git init}. For me (on Mac) this looks like
+a git repo, navigate to the folder inside of the terminal using the
+\lstinline{cd} command (which stands for change directory), and then
+run the command \lstinline{git init}. For me (on Mac) this looks like
 \begin{lstlisting}
 chris test % git init 
 Initialized empty Git repository in /Users/chris/Desktop/test/.git/
 chris test % 
 \end{lstlisting}
-Now a git repo has been created and we can start tracking
+In the notation above everything after \(\%\) is the command I
+entered, and before it is the user (chris) followed by the folder
+(test). A git repo has been created and so we can start tracking
 files. Really this means a hidden folder named \lstinline{.git} has
-been created inside of the test folder where git will keep all of the
+been created inside of the \lstinline{test} folder where git will keep all of the
 necessary data to track our project.
 \section{The First Commit}
-Making a commit in git is like etching the current status of the
-project into stone. It's not that you cant make changes after this,
-but there will always bee a record of exactly how this folder was at
-the instance of commit stored in this git repo. To look around at what
-is going on inside of the git repo one uses the \lstinline{git status}
-command:
+Making a commit in git is like etching the current state of the
+project into stone. It's not that you can't make changes after this,
+but there will always be an exact record of the contents of this
+folder at the instance of commit. To look
+around at what is going on inside of the git repo one uses the
+\lstinline{git status} command:
 \begin{lstlisting}
 chris test % git status
 On branch master
@@ -121,12 +123,12 @@ forget.
 Now we use the \lstinline{git stage test.tex} command to tell git we
 are about to commit this file. This will seem slightly redundant for
 our single file example, but this becomes important when one is
-committing multiple files that all have a related changes, then one
+committing multiple files that all have a related changes. Next one
 runs the \lstinline{git commit -m ``Message''}. The extra option
 \lstinline{-m} specifies the message of the commit, which can be
 whatever you want. This is useful for when you are looking back at the
 changes over time. If one fails to specify the message here, they will
-be dropped into the default system text editor, probably vim or emacs
+be dropped into the default system text editor, probably vi / vim or emacs...
 which could be unpleasant.
 \begin{lstlisting}
 chris test % git stage test.tex
@@ -137,7 +139,7 @@ chris test % git commit -m "First Commit"
  create mode 100644 test.tex
 chris test % 
 \end{lstlisting}
-In the above my message was ``First Commit''. We can now inspect the
+In the above commit my message was ``First Commit''. We can now inspect the
 previous commits using \lstinline{git log}:
 
 
@@ -150,7 +152,7 @@ Date:   Thu Dec 3 14:26:46 2020 -0500
     First Commit
 
 \end{lstlisting}
-This is the most basic use of git. Now after you make changes to your
+This is the most basic usage of git. Now after you make changes to your
 file, stage the file, and commit it again with the relevant
 message, and this will add to your repo. Notice the long string of
 numbers and letters, this is the unique id of this commit. It is
@@ -160,8 +162,8 @@ mathematically interesting).
 \section{Pushing and Pulling and GitHub}
 So far this repo is only stored locally on your computer inside of the
 \lstinline{test} folder. We wish to store copies of our repo somewhere
-else. A good choice is GitHub. Now after Microsoft bought GitHub any
-user can store private repositories. After making account on
+else in case of fire. A good choice is GitHub! After Microsoft bought GitHub any
+user can store private repositories for free. After making an account on
 \href{https://github.com/}{https://github.com/} you can make a new
 repository on the website, set it to private, and maybe name it say
 ``test''. Once this has been done you can push the local repository
@@ -172,13 +174,13 @@ git branch -M master
 git push -u origin master
 \end{lstlisting}
 Note: In Fall 2020 GitHub changed the default branch name of the repos
-to main instead of master, but the git still uses master as the
+to main instead of master, but Git still uses master as the
 default so here we had to change main to master to be consistent with
-thee defaults of Git itself.
+the defaults of Git itself.
 \begin{lstlisting}
 chris test % git remote add origin https://github.com/cjl8zf/test.git 
 chris test % git branch -M master
-chris3 test % git push -u origin master 
+chris test % git push -u origin master 
 Enumerating objects: 3, done.
 Counting objects: 100% (3/3), done.
 Delta compression using up to 12 threads
@@ -195,13 +197,13 @@ be done one time! Now you should see the tracked file has appeared on GitHub.
 The real utility of Git comes from the way it allows multiple authors
 / programmers to collaborate on projects without over-writing other
 peoples work. To pull changes from the GitHub you would run
-\lstinline{git pull} (only do this after you have committed
-everything you are working on currently) this will then download any
-changes and incorporate them into your repository. Although, there
-will be no changes to our \lstinline{test.tex} repo. Suppose we have
-made another change, committed it, and then want to add it to the
-GitHub repo. We would then use the \lstinline{git push} command. For
-example after making a small change in \lstinline{git test}
+\lstinline{git pull} (only do this after you have committed everything
+you are working on currently) this will then download any changes and
+incorporate them into your repository. Although, right now there will
+be no changes to our \lstinline{test.tex} repo. Suppose we have made
+another change, committed it, and then want to add it to the GitHub
+repo. We would then use the \lstinline{git push} command. For example
+after making a small change in \lstinline{test.tex} we would 
 \begin{lstlisting}
 chris test % git stage test.tex
 chris test % git commit -m "Made a change"
@@ -225,7 +227,7 @@ Now the changes we have made are backed up safely on GitHub!
 \section{Cloning a Repo and Grabbing a Thesis Template}
 There are many interesting projects on GitHub and due to the
 distributed nature of git you can copy the entire project directly
-onto your computer with one command: \lstinline{git clone}. For us we
+to your computer with one command: \lstinline{git clone}. For us we
 will download a copy of a nice UVA thesis template made by Chao Gu
 available at
 \href{https://github.com/asymmetry/uva-thesis-template}{https://github.com/asymmetry/uva-thesis-template}. Run
@@ -237,10 +239,11 @@ remote: Enumerating objects: 30, done.
 remote: Total 30 (delta 0), reused 0 (delta 0), pack-reused 30
 Unpacking objects: 100% (30/30), done.
 \end{lstlisting}
-this will download a working thesis template. You can now edit the
-files as you wish and commit to this project. You would setup a new
-GitHub project and set that as the origin by following the GitHub
-setup steps above.
+this will download a working thesis template. Note: you do not need a
+GitHub account to clone public repositories. You can now edit the
+files as you wish and commit to your local copy of this project. You
+would setup a new GitHub project and set that as the origin by
+following the GitHub setup steps above.
 
 The source code for these notes can be cloned via:
 \begin{lstlisting}
@@ -249,9 +252,10 @@ git clone https://github.com/cjl8zf/uva-grad-sem-git-guide
 
 \section{Overleaf}
 There is background integration of Git inside of Overleaf. In the left
-side bar there is a Git option which allows you to clone the Overleaf
+sidebar there is the Git option which allows you to clone the Overleaf
 project to your computer. You can then push to the origin (which will
-already be set up for you)!
+already be set up for you)! This will make your changes appear in
+Overleaf for everyone else! 
 \end{document}
 
 
